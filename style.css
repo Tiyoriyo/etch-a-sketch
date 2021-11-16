@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width:  500px;
+    height: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.square {
+    flex: auto;
+}
+
+.line-container {
+    display: flex;;
+    flex: auto;
+}
+
+.red {
+    background-color: red;
+}
