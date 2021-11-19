@@ -1,19 +1,34 @@
+html {
+    height: 100%
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    gap: 20px;
 }
 
-.grid-container {
+#clear {
+    padding: 5px 20px;
+    border-radius: 0%;
+    border: 1px solid black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#grid-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     border: 1px solid black;
     width:  500px;
     height: 500px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 
-.square {
+#box {
     flex: auto;
 }
 
@@ -23,5 +38,5 @@ body {
 }
 
 .red {
-    background-color: red;
+    background-color: #0693cf;
 }
