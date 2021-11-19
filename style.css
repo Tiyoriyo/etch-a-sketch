@@ -11,11 +11,40 @@ body {
     gap: 20px;
 }
 
+#container {
+    display: flex;
+}
+
+#left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: auto;
+    align-items: center;
+    flex: 1;
+}
+
+.left-button {
+    
+}
+
+#middle-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#right-container {
+    margin-left: auto;
+    flex: 1;
+}
+
 #clear {
     padding: 5px 20px;
     border-radius: 0%;
     border: 1px solid black;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    align-self: center;
 }
 
 #grid-container {
@@ -35,6 +64,14 @@ body {
 .line-container {
     display: flex;;
     flex: auto;
+}
+
+footer {
+    text-align: center;
+}
+
+#name {
+    font-style: italic;
 }
 
 .red {
