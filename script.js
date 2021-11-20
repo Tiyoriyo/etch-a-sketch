@@ -3,20 +3,23 @@ const gridContainer = document.querySelector('#grid-container');
 const lineContainerAll = document.getElementsByClassName('.line-container')
 const square = document.getElementsByClassName('square');
 const clearButton = document.querySelector('#clear');
+const blue = document.querySelector('#blue');
+const rgb = document.querySelector('#rgb');
+const black = document.querySelector('#black');
 
 const divSquare = document.createElement('div');
 const divLineContainer = document.createElement('div');
 
 createGrid(16);
 
-divs.forEach(() => {
-    addEventListener('mouseover', paintRed);
-});
 
-clearButton.addEventListener('click', () => {
-    addEventListener('click', newCanvas);
-});
+clearButton.addEventListener('click', newCanvas);
 
+blue.addEventListener('click', () => {
+    divs.forEach(() => {
+        addEventListener('mouseover', paintBlue);
+    });
+});
 
 function clearCanvas() {
     while (gridContainer.hasChildNodes()) {
@@ -54,9 +57,9 @@ function createGrid(x) {
     }
 }
 
-function paintRed(e) {
+function paintBlue(e) {
     if (e.target.id == 'box') {
-        e.target.classList.add('red');
+        e.target.classList.add('blue');
     } else {
         return;
     }
