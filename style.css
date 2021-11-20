@@ -13,25 +13,50 @@ body {
 
 #container {
     display: flex;
+    gap: 50px;
+    width: 100%;
 }
 
 #left-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: auto;
-    align-items: center;
+    align-items: flex-end;
     flex: 1;
+    gap: 30px;
+}
+
+#left-span {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .left-button {
-    
+    padding: 10px 20px;
+}
+
+#blue {
+    background: linear-gradient(122deg, rgba(6,147,207,1) 0%, rgba(175,231,255,1) 100%);
+    border: 1px solid black;
+}
+
+#rgb {
+    background: linear-gradient(122deg, rgba(0,255,0,1) 0%, rgba(0,255,245,1) 50%, rgba(27,0,255,1) 100%);
+    border: 1px solid black;
+}
+
+#black {
+    background: linear-gradient(122deg, rgba(0,0,0,1) 0%, rgba(210,210,210,1) 100%);
+    border: 1px solid black;
 }
 
 #middle-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1;
+
 }
 
 #right-container {
