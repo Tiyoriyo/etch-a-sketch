@@ -3,12 +3,15 @@ const gridContainer = document.querySelector('#grid-container');
 const lineContainerAll = document.getElementsByClassName('.line-container')
 const square = document.getElementsByClassName('square');
 const clearButton = document.querySelector('#clear');
+const newButton = document.querySelector('#new')
 const blue = document.querySelector('#blue');
 const rgb = document.querySelector('#rgb');
 const black = document.querySelector('#black');
 const remove = document.querySelector('#remove')
+const buttons = document.querySelectorAll('.left-button');
 
 let count = 0;
+let gridCount = 0;
 
 const divSquare = document.createElement('div');
 const divLineContainer = document.createElement('div');
@@ -16,43 +19,62 @@ const divLineContainer = document.createElement('div');
 createGrid(16);
 
 
-clearButton.addEventListener('click', newCanvas);
+newButton.addEventListener('click', newCanvas);
+clearButton.addEventListener('click', () => {
+    clearCanvas();
+    createGrid(gridCount);
+})
 
 blue.addEventListener('click', () => {
     divs.forEach(() => {
-        removeEventListener('mouseover', setRgbClass);
-        removeEventListener('mouseover', paintBlack);
-        removeEventListener('mouseover', clearPaint);
+        removeListeners();
         addEventListener('mouseover', paintBlue);
+        buttons.forEach(button => {
+            button.classList.remove('onUse');
+        })
+        blue.classList.add('onUse');
     });
 });
 
 rgb.addEventListener('click', () => {
     divs.forEach(() => {
-        removeEventListener('mouseover', paintBlue);
-        removeEventListener('mouseover', paintBlack);
-        removeEventListener('mouseover', clearPaint);
+        removeListeners();
         addEventListener('mouseover', setRgbClass);
+        buttons.forEach(button => {
+            button.classList.remove('onUse');
+        })
+        rgb.classList.add('onUse');
     });
 });
 
 black.addEventListener('click', () => {
     divs.forEach(() => {
-        removeEventListener('mouseover', paintBlue);
-        removeEventListener('mouseover', setRgbClass);
-        removeEventListener('mouseover', clearPaint);
+        removeListeners();
         addEventListener('mouseover', paintBlack);
+        buttons.forEach(button => {
+            button.classList.remove('onUse');
+        });
+        black.classList.add('onUse');
     });
 });
 
 remove.addEventListener('click', () => {
     divs.forEach(() => {
-        removeEventListener('mouseover', paintBlue);
-        removeEventListener('mouseover', setRgbClass);
-        removeEventListener('mouseover', paintBlack);
+        removeListeners();
         addEventListener('mouseover', clearPaint);
+        buttons.forEach(button => {
+            button.classList.remove('onUse');
+        })
+        remove.classList.add('onUse')
     })
 })
+
+function removeListeners() {
+    removeEventListener('mouseover', paintBlue);
+    removeEventListener('mouseover', setRgbClass);
+    removeEventListener('mouseover', paintBlack);
+    removeEventListener('mouseover', clearPaint);
+}
 
 function clearCanvas() {
     while (gridContainer.hasChildNodes()) {
@@ -88,6 +110,9 @@ function createGrid(x) {
         div.style.setProperty('width', boxWidth + "px");
         gridContainer.appendChild(div);
     }
+
+    gridCount = x;
+    
 }
 
 function paintBlue(e) {
