@@ -73,6 +73,19 @@ button {
     border: 1px solid black;
 }
 
+#remove {
+    border: 1px solid black;
+}
+
+#remove::after {
+    content: "";
+    position: absolute;
+    border-top: 1px slid red;
+        width: 40px;
+        transform: rotate(45deg);
+        transform-origin: 0% 0%;
+}
+
 #middle-container {
     display: flex;
     flex-direction: column;
