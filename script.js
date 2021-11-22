@@ -6,6 +6,7 @@ const clearButton = document.querySelector('#clear');
 const blue = document.querySelector('#blue');
 const rgb = document.querySelector('#rgb');
 const black = document.querySelector('#black');
+const remove = document.querySelector('#remove')
 
 let count = 0;
 
@@ -21,6 +22,7 @@ blue.addEventListener('click', () => {
     divs.forEach(() => {
         removeEventListener('mouseover', setRgbClass);
         removeEventListener('mouseover', paintBlack);
+        removeEventListener('mouseover', clearPaint);
         addEventListener('mouseover', paintBlue);
     });
 });
@@ -29,6 +31,7 @@ rgb.addEventListener('click', () => {
     divs.forEach(() => {
         removeEventListener('mouseover', paintBlue);
         removeEventListener('mouseover', paintBlack);
+        removeEventListener('mouseover', clearPaint);
         addEventListener('mouseover', setRgbClass);
     });
 });
@@ -37,9 +40,19 @@ black.addEventListener('click', () => {
     divs.forEach(() => {
         removeEventListener('mouseover', paintBlue);
         removeEventListener('mouseover', setRgbClass);
+        removeEventListener('mouseover', clearPaint);
         addEventListener('mouseover', paintBlack);
     });
 });
+
+remove.addEventListener('click', () => {
+    divs.forEach(() => {
+        removeEventListener('mouseover', paintBlue);
+        removeEventListener('mouseover', setRgbClass);
+        removeEventListener('mouseover', paintBlack);
+        addEventListener('mouseover', clearPaint);
+    })
+})
 
 function clearCanvas() {
     while (gridContainer.hasChildNodes()) {
@@ -105,6 +118,15 @@ function setRgbClass(e) {
     if (e.target.id == 'box') {
         e.target.style.setProperty('background-color', getRGB());
         e.target.style.opacity = 1;
+    } else {
+        return;
+    }
+}
+
+function clearPaint(e) {
+    if (e.target.id == 'box') {
+        e.target.style.setProperty('background-color', '');
+        e.target.style.opacity = '';
     } else {
         return;
     }
