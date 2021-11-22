@@ -4,7 +4,7 @@ const lineContainerAll = document.getElementsByClassName('.line-container')
 const square = document.getElementsByClassName('square');
 const clearButton = document.querySelector('#clear');
 const newButton = document.querySelector('#new')
-const blue = document.querySelector('#blue');
+const colour = document.querySelector('#anyColour');
 const rgb = document.querySelector('#rgb');
 const black = document.querySelector('#black');
 const remove = document.querySelector('#remove')
@@ -25,14 +25,14 @@ clearButton.addEventListener('click', () => {
     createGrid(gridCount);
 })
 
-blue.addEventListener('click', () => {
+colour.addEventListener('click', () => {
     divs.forEach(() => {
         removeListeners();
-        addEventListener('mouseover', paintBlue);
+        addEventListener('mouseover', paintColour)
         buttons.forEach(button => {
             button.classList.remove('onUse');
         })
-        blue.classList.add('onUse');
+        colour.classList.add('onUse');
     });
 });
 
@@ -70,10 +70,28 @@ remove.addEventListener('click', () => {
 })
 
 function removeListeners() {
-    removeEventListener('mouseover', paintBlue);
+    removeEventListener('mouseover', paintColour);
     removeEventListener('mouseover', setRgbClass);
     removeEventListener('mouseover', paintBlack);
     removeEventListener('mouseover', clearPaint);
+}
+
+function blueMouseDown() {
+    addEventListener('mousedown', () => {
+        addEventListener('mouseover', paintBlue);
+    });
+    addEventListener('mouseup', () => {
+        removeEventListener('mouseover', paintBlue);
+    })
+}
+
+function rgbMouseDown() {
+    addEventListener('mousedown', () => {
+        addEventListener('mouseover', setRgbClass);
+    });
+    addEventListener('mouseup', () => {
+        removeEventListener('mouseover', setRgbClass);
+    })
 }
 
 function clearCanvas() {
@@ -115,9 +133,12 @@ function createGrid(x) {
     
 }
 
-function paintBlue(e) {
+function paintColour(e) {
+
+    let hex = document.getElementById('anyColour').value;
+
     if (e.target.id == 'box') {
-        e.target.style.setProperty('background-color', '#0693cf')
+        e.target.style.setProperty('background-color', hex)
         e.target.style.opacity = 1;
     } else {
         return;
