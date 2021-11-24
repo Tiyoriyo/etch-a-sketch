@@ -76,24 +76,6 @@ function removeListeners() {
     removeEventListener('mouseover', clearPaint);
 }
 
-function blueMouseDown() {
-    addEventListener('mousedown', () => {
-        addEventListener('mouseover', paintBlue);
-    });
-    addEventListener('mouseup', () => {
-        removeEventListener('mouseover', paintBlue);
-    })
-}
-
-function rgbMouseDown() {
-    addEventListener('mousedown', () => {
-        addEventListener('mouseover', setRgbClass);
-    });
-    addEventListener('mouseup', () => {
-        removeEventListener('mouseover', setRgbClass);
-    })
-}
-
 function clearCanvas() {
     while (gridContainer.hasChildNodes()) {
         gridContainer.removeChild(gridContainer.lastChild);
